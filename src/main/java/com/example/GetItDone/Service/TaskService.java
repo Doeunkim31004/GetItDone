@@ -15,6 +15,10 @@ public class TaskService {
 	@Autowired
 	private TaskRepository taskRepository;
 	
+	public List<Task> findAllTasks() {
+        return taskRepository.findAll(); // 전체 할 일 조회 추가
+    }
+	
 	public List<Task> findTaskByUserId(Long userId){
 		return taskRepository.findByUserId(userId);
 	}
@@ -40,7 +44,7 @@ public class TaskService {
         return taskRepository.findById(taskId).map(task -> {
             task.setTitle(updatedTask.getTitle());
             task.setDescription(updatedTask.getDescription());
-            task.setComplete(updatedTask.isComplete());
+            task.setCompleted(updatedTask.isCompleted());
             task.setDueDate(updatedTask.getDueDate());
             return taskRepository.save(task);
         });

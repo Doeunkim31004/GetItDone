@@ -26,7 +26,7 @@ public class Task {
 	private LocalDate dueDate;
 	
 	@Column(nullable = false)
-	private boolean complete = false;
+	private boolean completed = false;
 	
 	@ManyToOne
 	@JoinColumn(name = "user_id", nullable = false)
